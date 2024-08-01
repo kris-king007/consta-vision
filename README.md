@@ -41,7 +41,21 @@ npm i -g @nestjs/cli
 Visit https://docs.docker.com/engine/install/ to download for your operating system.
 This installs Docker Desktop which includes Docker Compose.
 
-**5. From consta-nest run:**
+**5. Install App**
+
+```bash
+npm install
+```
+
+**6. Build App**
+
+```bash
+npm run build
+```
+
+**7. Run Docker**
+
+From consta-nest run:
 
 ````bash
 docker compose up
@@ -49,9 +63,10 @@ docker compose up
 
 For more information on Docker Compose CLI see https://docs.docker.com/compose/compose-application-model/#cli 
 
-**7. Run the app**
 
-From within the top level of consta-nest run:
+**8. Run the app**
+
+From within the top level of consta-vision run:
 
 ````bash
 npm run start
