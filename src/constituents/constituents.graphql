@@ -1,0 +1,24 @@
+type Constituent {
+  # Example field (placeholder)
+  exampleField: Int
+}
+
+input CreateConstituentInput {
+  # Example field (placeholder)
+  exampleField: Int
+}
+
+input UpdateConstituentInput {
+  id: Int!
+}
+
+type Query {
+  constituents: [Constituent]!
+  constituent(id: Int!): Constituent
+}
+
+type Mutation {
+  createConstituent(createConstituentInput: CreateConstituentInput!): Constituent!
+  updateConstituent(updateConstituentInput: UpdateConstituentInput!): Constituent!
+  removeConstituent(id: Int!): Constituent
+}
