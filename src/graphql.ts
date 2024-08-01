@@ -9,21 +9,48 @@
 /* eslint-disable */
 
 export class CreateConstituentInput {
-    exampleField?: Nullable<number>;
+    email: string;
+    firstName?: Nullable<string>;
+    lastName?: Nullable<string>;
+    streetAddressLine1?: Nullable<string>;
+    streetAddressLine2?: Nullable<string>;
+    city?: Nullable<string>;
+    state?: Nullable<string>;
+    territory?: Nullable<string>;
+    country?: Nullable<string>;
+    phoneNumber?: Nullable<number>;
 }
 
 export class UpdateConstituentInput {
-    id: number;
+    email: string;
+    firstName?: Nullable<string>;
+    lastName?: Nullable<string>;
+    streetAddressLine1?: Nullable<string>;
+    streetAddressLine2?: Nullable<string>;
+    city?: Nullable<string>;
+    state?: Nullable<string>;
+    territory?: Nullable<string>;
+    country?: Nullable<string>;
+    phoneNumber?: Nullable<number>;
 }
 
 export class Constituent {
-    exampleField?: Nullable<number>;
+    email: string;
+    firstName?: Nullable<string>;
+    lastName?: Nullable<string>;
+    streetAddressLine1?: Nullable<string>;
+    streetAddressLine2?: Nullable<string>;
+    city?: Nullable<string>;
+    state?: Nullable<string>;
+    territory?: Nullable<string>;
+    country?: Nullable<string>;
+    phoneNumber?: Nullable<number>;
 }
 
 export abstract class IQuery {
-    abstract constituents(): Nullable<Constituent>[] | Promise<Nullable<Constituent>[]>;
+    abstract constituents(): Constituent[] | Promise<Constituent[]>;
 
-    abstract constituent(id: number): Nullable<Constituent> | Promise<Nullable<Constituent>>;
+    abstract constituent(email: string): Nullable<Constituent> | Promise<Nullable<Constituent>>;
 }
 
 export abstract class IMutation {
@@ -31,7 +58,7 @@ export abstract class IMutation {
 
     abstract updateConstituent(updateConstituentInput: UpdateConstituentInput): Constituent | Promise<Constituent>;
 
-    abstract removeConstituent(id: number): Nullable<Constituent> | Promise<Nullable<Constituent>>;
+    abstract removeConstituent(id: string): Nullable<Constituent> | Promise<Nullable<Constituent>>;
 }
 
 type Nullable<T> = T | null;

@@ -1,24 +1,49 @@
 type Constituent {
-  # Example field (placeholder)
-  exampleField: Int
+  email: String!
+  firstName: String
+  lastName: String
+  streetAddressLine1: String
+  streetAddressLine2: String
+  city: String
+  state: String
+  territory: String
+  country: String
+  phoneNumber: Int
 }
 
 input CreateConstituentInput {
-  # Example field (placeholder)
-  exampleField: Int
+  email: String!
+  firstName: String
+  lastName: String
+  streetAddressLine1: String
+  streetAddressLine2: String
+  city: String
+  state: String
+  territory: String
+  country: String
+  phoneNumber: Int
 }
 
 input UpdateConstituentInput {
-  id: Int!
+  email: String! 
+  firstName: String
+  lastName: String
+  streetAddressLine1: String
+  streetAddressLine2: String
+  city: String
+  state: String
+  territory: String
+  country: String
+  phoneNumber: Int
 }
 
 type Query {
-  constituents: [Constituent]!
-  constituent(id: Int!): Constituent
+  constituents: [Constituent!]!
+  constituent(email: String!): Constituent
 }
 
 type Mutation {
   createConstituent(createConstituentInput: CreateConstituentInput!): Constituent!
   updateConstituent(updateConstituentInput: UpdateConstituentInput!): Constituent!
-  removeConstituent(id: Int!): Constituent
+  removeConstituent(id: ID!): Constituent
 }

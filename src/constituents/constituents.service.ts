@@ -12,15 +12,15 @@ export class ConstituentsService {
     return `This action returns all constituents`;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} constituent`;
+  findOne(email: String) {
+    return `This action returns the #${email} for a constituent`;
   }
 
-  update(id: number, updateConstituentInput: UpdateConstituentInput) {
-    return `This action updates a #${id} constituent`;
+  update(email: String, updateConstituentInput: UpdateConstituentInput) {
+    return `This action updates the #${email} for a constituent`;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} constituent`;
+  remove(email: String) {
+    return `This action removes the #${email} for a constituent`;
   }
 }

@@ -18,17 +18,17 @@ export class ConstituentsResolver {
   }
 
   @Query('constituent')
-  findOne(@Args('id') id: number) {
-    return this.constituentsService.findOne(id);
+  findOne(@Args('email') email: String) {
+    return this.constituentsService.findOne(email);
   }
 
   @Mutation('updateConstituent')
   update(@Args('updateConstituentInput') updateConstituentInput: UpdateConstituentInput) {
-    return this.constituentsService.update(updateConstituentInput.id, updateConstituentInput);
+    return this.constituentsService.update(updateConstituentInput.email, updateConstituentInput);
   }
 
   @Mutation('removeConstituent')
-  remove(@Args('id') id: number) {
-    return this.constituentsService.remove(id);
+  remove(@Args('email') email: String) {
+    return this.constituentsService.remove(email);
   }
 }

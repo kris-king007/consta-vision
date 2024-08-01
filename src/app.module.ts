@@ -6,12 +6,11 @@ import { AppService } from './app.service';
 import { ConstituentsModule } from './constituents/constituents.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { join } from 'path';
-import { ConstituentsModule } from './constituents/constituents.module';
 
 @Module({
   imports: [
     ConstituentsModule,
-    MongooseModule.forRoot('mongodb://localhost/nest'),
+    MongooseModule.forRoot('mongodb://loßcalhost/nest'),
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       typePaths: ['./**/*.graphql'],
