@@ -1,23 +1,45 @@
 import { Injectable } from '@nestjs/common';
-import { Constituent } from '../graphql.schema';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { CreateConstituentDto } from './dto/create-constituent.dto';
+import { Constituent } from './entities/constituent.entity';
+import { constituentCsvWriter, constituentCsvWriterPath } from 'src/commons/csvConverter';
 
 @Injectable()
 export class ConstituentsService {
-  private readonly constituents: Constituent[] = [];
+  constructor(
+    @InjectRepository(Constituent)
+    private constituentsRepository: Repository<Constituent>,
+  ) {}
 
-  create(constituent: Constituent) {
-    // TODO: add timestamp
-    this.constituents.push(constituent);
-    return constituent;
+  create(createConstituentDto: CreateConstituentDto) {
+    const constituent = new Constituent();
+    constituent.email = createConstituentDto.email;
+    constituent.firstName = createConstituentDto.firstName;
+    constituent.lastName = createConstituentDto.lastName;
+    constituent.address = createConstituentDto.address;
+  
+    return this.constituentsRepository.save(constituent);
   }
 
-  findAll() {
-    return this.constituents;
+  // async findAll(): Promise<Constituent[]> {
+  //   return this.constituentsRepository.find();
+  // }
+
+  async getCsv(): Promise<string> {    
+    const constituents = this.constituentsRepository.find();
+    await constituentCsvWriter.writeRecords([constituents]);
+    // TODO: create a stream and return file.
+    return constituentCsvWriterPath;
   }
 
-  update(constituent: Constituent) {
-    const matchedConstituentIndex = this.constituents.findIndex((person) => person.email == constituent.email);
-    this.constituents[matchedConstituentIndex] = constituent;
-    return constituent;
+  findOne(email: string): Promise<Constituent | null> {
+    return this.constituentsRepository.findOneBy({ email: email });
+  }
+
+  async remove(id: number): Promise<void> {
+    await this.constituentsRepository.delete(id);
   }
 }
+
+

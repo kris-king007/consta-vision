@@ -13,7 +13,7 @@ We'll use the nvm package manage to install Node to ensure our Node and npm vers
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash
 ````
 
-Running either the above command downloads a script and runs it. The script clones the nvm repository to ~/.nvm, and attempts to add the source lines from the snippet below to the correct profile file (~/.bash_profile, ~/.zshrc, ~/.profile, or ~/.bashrc).
+Running either the above command downloads a script and runs it. The script clones the nvm repository to `~/.nvm`, and attempts to add the source lines from the snippet below to the correct profile file (`~/.bash_profile`, `~/.zshrc`, `~/.profile`, or `~/.bashrc`).
 
 ````bash
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
@@ -116,6 +116,8 @@ In the above example, `constituents` is the name of the new resource. Nest expec
 It will automatically use the singular form of the name when creating DTOs and the entity file.
 
 Visit https://docs.nestjs.com/recipes/crud-generator#crud-generator for more information.
+
+**Resources in this application were created using the Rest API approach.**
 
 ### To manually generate typescript files based off graphql schema (shema first)
 
