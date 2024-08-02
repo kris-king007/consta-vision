@@ -1,9 +1,11 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, StreamableFile } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { CreateConstituentDto } from './dto/create-constituent.dto';
 import { Constituent } from './entities/constituent.entity';
-import { constituentCsvWriter, constituentCsvWriterPath } from 'src/commons/csvConverter';
+import { json2csv } from 'json-2-csv';
+
+const constituentCsvWriterPath = './tmp/constituents.csv';
 
 @Injectable()
 export class ConstituentsService {
@@ -22,15 +24,13 @@ export class ConstituentsService {
     return this.constituentsRepository.save(constituent);
   }
 
-  // async findAll(): Promise<Constituent[]> {
-  //   return this.constituentsRepository.find();
-  // }
-
   async getCsv(): Promise<string> {    
-    const constituents = this.constituentsRepository.find();
-    await constituentCsvWriter.writeRecords([constituents]);
-    // TODO: create a stream and return file.
-    return constituentCsvWriterPath;
+    const constituents = await this.constituentsRepository.find();
+    const options = {
+      emptyFieldValue: 'Not Provided',
+    };
+    return await json2csv(constituents, options)
+    // TODO: Save csvString as csv file instead of return csv string.
   }
 
   findOne(email: string): Promise<Constituent | null> {
