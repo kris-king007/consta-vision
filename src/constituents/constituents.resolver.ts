@@ -1,8 +1,8 @@
 import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
 import { Constituent } from 'src/graphql.schema';
 import { ConstituentsService } from './constituents.service';
-import { CreateConstituentDTO } from './dto/create-constituent.dto';
-import { UpdateConstituentDTO } from './dto/update-constituent.dto';
+import { CreateConstituentDTO } from './dto/create-constituent.input';
+import { UpdateConstituentDTO } from './dto/update-constituent.input';
 
 @Resolver('Constituent')
 export class ConstituentsResolver {
