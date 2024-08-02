@@ -14,7 +14,8 @@ import { join } from 'path';
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       typePaths: ['./**/*.graphql'],
-      path: join(process.cwd(), 'src/graphql.ts'),
+      path: join(process.cwd(), 'src/graphql.schema.ts'),
+      installSubscriptionHandlers: true,
     }),
   ],
   controllers: [AppController],

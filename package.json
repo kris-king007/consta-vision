@@ -22,6 +22,7 @@
   },
   "dependencies": {
     "@apollo/server": "^4.10.5",
+    "@mrodrig/json-2-csv-cli": "^5.5.5",
     "@nestjs/apollo": "^12.2.0",
     "@nestjs/common": "^10.0.0",
     "@nestjs/core": "^10.0.0",
@@ -33,6 +34,7 @@
     "class-validator": "^0.14.1",
     "graphql": "^16.9.0",
     "graphql-subscriptions": "^2.0.0",
+    "json-2-csv": "^5.5.4",
     "mongoose": "^8.5.2",
     "reflect-metadata": "^0.2.0",
     "rimraf": "^6.0.1",

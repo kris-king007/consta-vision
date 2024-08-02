@@ -1,26 +1,23 @@
 import { Injectable } from '@nestjs/common';
-import { CreateConstituentInput } from './dto/create-constituent.input';
-import { UpdateConstituentInput } from './dto/update-constituent.input';
+import { Constituent } from '../graphql.schema';
 
 @Injectable()
 export class ConstituentsService {
-  create(createConstituentInput: CreateConstituentInput) {
-    return 'This action adds a new constituent';
+  private readonly constituents: Constituent[] = [];
+
+  create(constituent: Constituent) {
+    // TODO: add timestamp
+    this.constituents.push(constituent);
+    return constituent;
   }
 
   findAll() {
-    return `This action returns all constituents`;
+    return this.constituents;
   }
 
-  findOne(email: String) {
-    return `This action returns the #${email} for a constituent`;
-  }
-
-  update(email: String, updateConstituentInput: UpdateConstituentInput) {
-    return `This action updates the #${email} for a constituent`;
-  }
-
-  remove(email: String) {
-    return `This action removes the #${email} for a constituent`;
+  update(constituent: Constituent) {
+    const matchedConstituentIndex = this.constituents.findIndex((person) => person.email == constituent.email);
+    this.constituents[matchedConstituentIndex] = constituent;
+    return constituent;
   }
 }

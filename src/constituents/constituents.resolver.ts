@@ -1,34 +1,25 @@
 import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
+import { Constituent } from 'src/graphql.schema';
 import { ConstituentsService } from './constituents.service';
-import { CreateConstituentInput } from './dto/create-constituent.input';
-import { UpdateConstituentInput } from './dto/update-constituent.input';
+import { CreateConstituentDTO } from './dto/create-constituent.dto';
+import { UpdateConstituentDTO } from './dto/update-constituent.dto';
 
 @Resolver('Constituent')
 export class ConstituentsResolver {
   constructor(private readonly constituentsService: ConstituentsService) {}
 
-  @Mutation('createConstituent')
-  create(@Args('createConstituentInput') createConstituentInput: CreateConstituentInput) {
-    return this.constituentsService.create(createConstituentInput);
-  }
-
   @Query('constituents')
-  findAll() {
+  async findAll() {
     return this.constituentsService.findAll();
   }
 
-  @Query('constituent')
-  findOne(@Args('email') email: String) {
-    return this.constituentsService.findOne(email);
+  @Mutation('createConstituent')
+  async create(@Args('createConstituentInput') args: CreateConstituentDTO): Promise<Constituent> {
+    return this.constituentsService.create(args);
   }
 
   @Mutation('updateConstituent')
-  update(@Args('updateConstituentInput') updateConstituentInput: UpdateConstituentInput) {
-    return this.constituentsService.update(updateConstituentInput.email, updateConstituentInput);
-  }
-
-  @Mutation('removeConstituent')
-  remove(@Args('email') email: String) {
-    return this.constituentsService.remove(email);
+  async update(@Args('updateConstituentInput') args: UpdateConstituentDTO): Promise<Constituent> {
+    return this.constituentsService.update(args);
   }
 }

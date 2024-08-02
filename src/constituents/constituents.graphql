@@ -38,12 +38,10 @@ input UpdateConstituentInput {
 }
 
 type Query {
-  constituents: [Constituent!]!
-  constituent(email: String!): Constituent
+  constituents: [Constituent]!
 }
 
 type Mutation {
   createConstituent(createConstituentInput: CreateConstituentInput!): Constituent!
   updateConstituent(updateConstituentInput: UpdateConstituentInput!): Constituent!
-  removeConstituent(id: ID!): Constituent
 }

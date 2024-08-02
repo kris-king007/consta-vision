@@ -48,17 +48,13 @@ export class Constituent {
 }
 
 export abstract class IQuery {
-    abstract constituents(): Constituent[] | Promise<Constituent[]>;
-
-    abstract constituent(email: string): Nullable<Constituent> | Promise<Nullable<Constituent>>;
+    abstract constituents(): Nullable<Constituent>[] | Promise<Nullable<Constituent>[]>;
 }
 
 export abstract class IMutation {
     abstract createConstituent(createConstituentInput: CreateConstituentInput): Constituent | Promise<Constituent>;
 
     abstract updateConstituent(updateConstituentInput: UpdateConstituentInput): Constituent | Promise<Constituent>;
-
-    abstract removeConstituent(id: string): Nullable<Constituent> | Promise<Nullable<Constituent>>;
 }
 
 type Nullable<T> = T | null;
