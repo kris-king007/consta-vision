@@ -20,8 +20,8 @@ export class ConstituentsController {
   }
 
   @Get()
-  findAll(): Promise<Constituent[]> {
-    return this.constituentsService.findAll();
+  findAll(): Promise<string> {
+    return this.constituentsService.getCsv();
   }
 
   @Get(':email')

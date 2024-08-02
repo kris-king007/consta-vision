@@ -3,6 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { CreateConstituentDto } from './dto/create-constituent.dto';
 import { Constituent } from './entities/constituent.entity';
+import { constituentCsvWriter, constituentCsvWriterPath } from 'src/commons/csvConverter';
 
 @Injectable()
 export class ConstituentsService {
@@ -21,8 +22,15 @@ export class ConstituentsService {
     return this.constituentsRepository.save(constituent);
   }
 
-  async findAll(): Promise<Constituent[]> {
-    return this.constituentsRepository.find();
+  // async findAll(): Promise<Constituent[]> {
+  //   return this.constituentsRepository.find();
+  // }
+
+  async getCsv(): Promise<string> {    
+    const constituents = this.constituentsRepository.find();
+    await constituentCsvWriter.writeRecords([constituents]);
+    // TODO: create a stream and return file.
+    return constituentCsvWriterPath;
   }
 
   findOne(email: string): Promise<Constituent | null> {
@@ -33,3 +41,5 @@ export class ConstituentsService {
     await this.constituentsRepository.delete(id);
   }
 }
+
+

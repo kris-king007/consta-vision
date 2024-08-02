@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { ConstituentsModule } from './constituents/constituents.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { ConstituentsModule } from './constituents/constituents.module';
 
 @Module({
   imports: [
