@@ -93,10 +93,10 @@ chsh -s /bin/bash
 To switch back to default zsh shell:
 
 ````bash
-chsh -s /bin/zsh`
+chsh -s /bin/zsh
 ````
 
-### Create a new Nest Project
+### to create a new Nest Project
 
 From the directory you want your new project to reside:
 
@@ -106,4 +106,30 @@ nest new project-name
 
 Select `npm` (the default selection) as the package manager.
 
-### Create a new Nest Service
+### To create a new Nest Resource
+
+````bash
+nest g resource constituents
+````
+
+In the above example, `constituents` is the name of the new resource. Nest expects the resource to be in its plural form. 
+It will automatically use the singular form of the name when creating DTOs and the entity file.
+
+Visit https://docs.nestjs.com/recipes/crud-generator#crud-generator for more information.
+
+### To manually generate typescript files based off graphql schema (shema first)
+
+1. Globally Install ts-node
+
+````bash
+npm i -g ts-node
+````
+
+2. Generate Typings
+
+````bash
+ts-node generate-typings
+````
+
+
+

@@ -1,0 +1,47 @@
+type Constituent {
+  email: String!
+  firstName: String
+  lastName: String
+  streetAddressLine1: String
+  streetAddressLine2: String
+  city: String
+  state: String
+  territory: String
+  country: String
+  phoneNumber: Int
+}
+
+input CreateConstituentInput {
+  email: String!
+  firstName: String
+  lastName: String
+  streetAddressLine1: String
+  streetAddressLine2: String
+  city: String
+  state: String
+  territory: String
+  country: String
+  phoneNumber: Int
+}
+
+input UpdateConstituentInput {
+  email: String! 
+  firstName: String
+  lastName: String
+  streetAddressLine1: String
+  streetAddressLine2: String
+  city: String
+  state: String
+  territory: String
+  country: String
+  phoneNumber: Int
+}
+
+type Query {
+  constituents: [Constituent]!
+}
+
+type Mutation {
+  createConstituent(createConstituentInput: CreateConstituentInput!): Constituent!
+  updateConstituent(updateConstituentInput: UpdateConstituentInput!): Constituent!
+}
