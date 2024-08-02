@@ -117,6 +117,8 @@ It will automatically use the singular form of the name when creating DTOs and t
 
 Visit https://docs.nestjs.com/recipes/crud-generator#crud-generator for more information.
 
+**Resources in this application were created using the Rest API approach.**
+
 ### To manually generate typescript files based off graphql schema (shema first)
 
 1. Globally Install ts-node
